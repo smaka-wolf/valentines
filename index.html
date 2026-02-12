@@ -107,8 +107,9 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
+            color: black;
         }
+
         input:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.3);
@@ -779,6 +780,44 @@
         function showGift() {
             window.location.href = 'gift.html';
         }
+
+        // Reset الصفحة عند التحميل
+window.addEventListener('load', () => {
+    // رجّع كلمة السر فارغة
+    document.getElementById('password').value = '';
+    
+    // ورِّي شاشة كلمة السر، خبّي المحتوى الرئيسي
+    document.getElementById('password-screen').classList.remove('hidden');
+    document.getElementById('main-content').classList.add('hidden');
+
+    // خبّي كل الأسئلة
+    for (let i = 1; i <= 9; i++) {
+        const q = document.getElementById('q' + i);
+        q.classList.remove('active');
+    }
+    document.getElementById('q1').classList.add('active');
+
+    // خبّي نتائج الاختبار
+    document.getElementById('result-section').classList.add('hidden');
+    
+    // خبّي كل الصور
+    for (let i = 1; i <= 10; i++) {
+        document.getElementById('photo-card-' + i).classList.add('hidden');
+    }
+
+    // خبّي هديّة
+    document.getElementById('gift-btn').classList.add('hidden');
+    document.getElementById('gift-message').classList.add('hidden');
+
+    // وقف الكونفيتي والانفجار ديال القلب
+    document.getElementById('confetti').classList.add('hidden');
+    document.getElementById('heart-explosion').classList.add('hidden');
+
+    // رجّع عدد الأسئلة الحالية والجواب الصحيح
+    currentQuestion = 1;
+    correctAnswers = 0;
+});
+
     </script>
 </body>
 </html>
