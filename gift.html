@@ -502,6 +502,32 @@
     -webkit-text-size-adjust: 100%;
     color-scheme: light;
 }
+.love-card {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+}
+
+.love-card textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 15px;
+    padding: 15px;
+    border: none;
+    resize: none;
+    font-family: inherit;
+    margin: 15px 0;
+}
+
+.love-card button {
+    padding: 12px 30px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
 
     </style>
 </head>
@@ -509,8 +535,12 @@
     <div class="hearts" id="hearts"></div>
     <div class="confetti hidden" id="confetti"></div>
     
+    <a href="index.html" class="back-btn" style="position: fixed; top: 20px; right: 20px; margin: 0; padding: 8px 15px; font-size: 14px; z-index: 100;">↩️</a>
+    
     <div class="glass-container">
         <h1>هديتك الخاصة 💝</h1>
+
+
         
         <div class="gift-box" id="giftBox" onclick="openGift()">🎁</div>
         
@@ -529,9 +559,8 @@
             <span>🕯️</span>
             <span>هدية خفيفة</span>
         </button>
-        
-        <a href="index.html" class="back-btn">العودة للرئيسية ↩️</a>
     </div>
+
     
     <!-- 3D Video Card Overlay -->
     <div class="video-card-overlay hidden" id="videoCardOverlay" onclick="closeVideoCard(event)">
@@ -557,8 +586,24 @@
                 </div>
             </div>
         </div>
-
+        
     </div>
+    <div class="love-card hidden" id="loveCard">
+    <h2>💌 اكتب لي رسالة</h2>
+
+    <form action="https://formsubmit.co/smakawolf66@gmail.com" method="POST">
+        
+        <textarea name="message" placeholder="اكتبي لي شي حاجة زوينة هنا 💕" required></textarea>
+
+        <!-- مهمين باش يخدم مزيان -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="رسالة جديدة من موقع الحب 💝">
+        <input type="hidden" name="_template" value="table">
+
+        <button type="submit">إرسال الرسالة 💖</button>
+    </form>
+</div>
+
 
     <footer>
         تم تطوير الموقع بواسطة : OUSSAMA SMAKA WOLF 🐺
@@ -667,6 +712,10 @@
                 card.classList.remove('flipped');
             }, 500);
         }
+        setTimeout(() => {
+    document.getElementById('loveCard').classList.remove('hidden');
+}, 2000);
+
     </script>
 
 </body>
