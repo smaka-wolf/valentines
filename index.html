@@ -660,7 +660,14 @@
 
                 <div class="typing" id="love-message-10"></div>
             </div>
+            <div class="photo-card hidden" id="photo-card-11">
+                <div class="photo">
+                    <img src="image/imag11.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-11"></div>
+            </div>
         </div>
+
 
         <button class="gift-btn hidden" id="gift-btn" onclick="showGift()">خدي هديتك 🎁</button>
         <div id="gift-message" class="hidden" style="margin-top: 20px; font-size: 20px; color: black; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">أنتِ هديتي الأكبر في الحياة! 💕</div>
@@ -753,8 +760,10 @@
                 { id: 'photo-card-7', msgId: 'love-message-7', text: 'معكِ أشعر بالأمان 🤗', delay: 3000 },
                 { id: 'photo-card-8', msgId: 'love-message-8', text: 'أنتِ أجمل شيء في حياتي 🌹', delay: 3500 },
                 { id: 'photo-card-9', msgId: 'love-message-9', text: 'سأحبكِ إلى الأبد ♾️', delay: 4000 },
-                { id: 'photo-card-10', msgId: 'love-message-10', text: 'أنتِ ملكي وحدي 👑', delay: 4500 }
+                { id: 'photo-card-10', msgId: 'love-message-10', text: 'أنتِ ملكي وحدي 👑', delay: 4500 },
+                { id: 'photo-card-11', msgId: 'love-message-11', text: 'حبكِ نور حياتي ✨', delay: 5000 }
             ];
+
             
             cards.forEach((card, index) => {
                 setTimeout(() => {
@@ -825,10 +834,11 @@
     if(resultSection) resultSection.classList.add('hidden');
 
     // خبّي كل الصور
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 11; i++) {
         const photo = document.getElementById('photo-card-' + i);
         if(photo) photo.classList.add('hidden');
     }
+
 
     // خبّي هديّة
     const giftBtn = document.getElementById('gift-btn');
@@ -850,10 +860,11 @@
     const bgMusic = document.getElementById('bg-music');
     if(bgMusic) bgMusic.load();
 
-    for(let i = 1; i <= 10; i++){
+    for(let i = 1; i <= 11; i++){
         const img = document.getElementById('photo-card-' + i);
         if(img) new Image().src = img.src;
     }
+
    });
 
 
