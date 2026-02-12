@@ -8,6 +8,8 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <style>
         * {
@@ -15,19 +17,15 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            font-family: 'Dancing Script', cursive;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: #000;
+       body {
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    color: #000;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding: 40px 15px;
+}
 
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
         body::before {
             content: '';
             position: fixed;
@@ -85,31 +83,40 @@
                 0 12px 40px 0 rgba(31, 38, 135, 0.45),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.3);
         }
-        .hidden { 
-            opacity: 0; 
-            pointer-events: none; 
-            transform: scale(0.95); 
-            position: absolute;
-        }
+        .hidden {
+    display: none !important;
         
+        }
+
         /* Glass Input */
         input {
-            font-family: inherit;
-            font-size: 18px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 20px;
-            margin: 10px;
-            width: 220px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+    font-size: 16px; /* مهم باش Safari مايديرش zoom */
+    padding: 15px 25px;
+    border: none;
+    border-radius: 20px;
+    margin: 10px auto;
+    width: 100%;
+    max-width: 320px;
+    display: block;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
         }
+        input:focus {
+    outline: none;
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+
         input::placeholder {
             color: black;
         }
