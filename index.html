@@ -476,7 +476,7 @@
     <div class="glass-container" id="password-screen">
         <h1> عيد حب سعيد حبيبتي حياة💖</h1>
         <p> مستعدة يا روحي </p>
-        <input type="password" id="password" placeholder="كلمة المرور">
+        <input type="password" id="password" placeholder="ادخلي كلمة المرور">
         <br>
         <button onclick="checkPassword()">اضغطي هنا لفتح قلبي💖</button>
         <p id="error" style="color: #ff6b6b; display: none; margin-top: 15px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">حبيبتي، جربي مرة أخرى 😘</p>
@@ -781,42 +781,62 @@
             window.location.href = 'gift.html';
         }
 
-        // Reset الصفحة عند التحميل
-window.addEventListener('load', () => {
+       // Reset الصفحة عند التحميل
+    window.addEventListener('load', () => {
     // رجّع كلمة السر فارغة
-    document.getElementById('password').value = '';
-    
+    const passwordInput = document.getElementById('password');
+    if(passwordInput) passwordInput.value = '';
+
     // ورِّي شاشة كلمة السر، خبّي المحتوى الرئيسي
-    document.getElementById('password-screen').classList.remove('hidden');
-    document.getElementById('main-content').classList.add('hidden');
+    const passwordScreen = document.getElementById('password-screen');
+    const mainContent = document.getElementById('main-content');
+    if(passwordScreen) passwordScreen.classList.remove('hidden');
+    if(mainContent) mainContent.classList.add('hidden');
 
     // خبّي كل الأسئلة
     for (let i = 1; i <= 9; i++) {
         const q = document.getElementById('q' + i);
-        q.classList.remove('active');
+        if(q) q.classList.remove('active');
     }
-    document.getElementById('q1').classList.add('active');
+    const firstQuestion = document.getElementById('q1');
+    if(firstQuestion) firstQuestion.classList.add('active');
 
     // خبّي نتائج الاختبار
-    document.getElementById('result-section').classList.add('hidden');
-    
+    const resultSection = document.getElementById('result-section');
+    if(resultSection) resultSection.classList.add('hidden');
+
     // خبّي كل الصور
     for (let i = 1; i <= 10; i++) {
-        document.getElementById('photo-card-' + i).classList.add('hidden');
+        const photo = document.getElementById('photo-card-' + i);
+        if(photo) photo.classList.add('hidden');
     }
 
     // خبّي هديّة
-    document.getElementById('gift-btn').classList.add('hidden');
-    document.getElementById('gift-message').classList.add('hidden');
+    const giftBtn = document.getElementById('gift-btn');
+    const giftMessage = document.getElementById('gift-message');
+    if(giftBtn) giftBtn.classList.add('hidden');
+    if(giftMessage) giftMessage.classList.add('hidden');
 
     // وقف الكونفيتي والانفجار ديال القلب
-    document.getElementById('confetti').classList.add('hidden');
-    document.getElementById('heart-explosion').classList.add('hidden');
+    const confetti = document.getElementById('confetti');
+    const heartExplosion = document.getElementById('heart-explosion');
+    if(confetti) confetti.classList.add('hidden');
+    if(heartExplosion) heartExplosion.classList.add('hidden');
 
     // رجّع عدد الأسئلة الحالية والجواب الصحيح
-    currentQuestion = 1;
-    correctAnswers = 0;
-});
+    window.currentQuestion = 1;
+    window.correctAnswers = 0;
+
+    // Preload الموسيقى والصور (باش مايوقعش delay)
+    const bgMusic = document.getElementById('bg-music');
+    if(bgMusic) bgMusic.load();
+
+    for(let i = 1; i <= 10; i++){
+        const img = document.getElementById('photo-card-' + i);
+        if(img) new Image().src = img.src;
+    }
+   });
+
 
     </script>
 </body>
