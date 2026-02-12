@@ -14,7 +14,8 @@
         body {
             font-family: 'Dancing Script', cursive;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            color: #333;
+            color: #000;
+
             overflow-x: hidden;
             min-height: 100vh;
             display: flex;
@@ -147,12 +148,14 @@
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
-            color: white;
+            color: black;
+
             margin-bottom: 20px;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         p {
-            color: rgba(255, 255, 255, 0.9);
+            color: black;
+
             font-size: 20px;
             margin-bottom: 20px;
         }
@@ -180,7 +183,8 @@
             transform: translateX(0);
         }
         .question-container h2 {
-            color: white;
+            color: black;
+
             font-size: 24px;
             margin-bottom: 25px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -203,7 +207,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            color: black;
+
             font-size: 16px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
@@ -220,7 +225,8 @@
         .result { 
             font-size: 32px; 
             margin: 20px 0;
-            color: white;
+            color: black;
+
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             font-weight: bold;
         }
@@ -290,7 +296,8 @@
         .typing { 
             font-family: 'Great Vibes', cursive; 
             font-size: 14px; 
-            color: white;
+            color: black;
+
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             border-right: 2px solid rgba(255, 255, 255, 0.8); 
             animation: blink 1s infinite; 
@@ -351,13 +358,15 @@
         .music-title {
             font-size: 16px;
             font-weight: bold;
-            color: white;
+            color: black;
+
             text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         .music-status {
             font-size: 13px;
             opacity: 0.9;
-            color: rgba(255, 255, 255, 0.8);
+            color: black;
+
         }
         .play-btn {
             background: rgba(255, 255, 255, 0.25);
@@ -429,7 +438,8 @@
             bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.9);
+            color: black;
+
             font-size: 14px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -564,8 +574,9 @@
 
         <div id="result-section" class="hidden">
             <div class="result" id="score"></div>
-            <p id="message" style="font-size: 22px; color: white;"></p>
+            <p id="message" style="font-size: 22px; color: black;"></p>
         </div>
+
         
         <div class="photos-grid" id="photos-grid">
             <div class="photo-card hidden" id="photo-card-1">
@@ -632,7 +643,8 @@
         </div>
 
         <button class="gift-btn hidden" id="gift-btn" onclick="showGift()">خدي هديتك 🎁</button>
-        <div id="gift-message" class="hidden" style="margin-top: 20px; font-size: 20px; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">أنتِ هديتي الأكبر في الحياة! 💕</div>
+        <div id="gift-message" class="hidden" style="margin-top: 20px; font-size: 20px; color: black; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">أنتِ هديتي الأكبر في الحياة! 💕</div>
+
     </div>
     
     <div class="confetti hidden" id="confetti"></div>
