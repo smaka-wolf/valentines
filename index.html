@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيد الحب السعيد</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(196, 69, 105, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 154, 158, 0.2) 0%, transparent 40%);
+            z-index: -2;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            animation: float 8s infinite ease-in-out;
+            filter: blur(1px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(0.5); opacity: 0; }
+        }
+        
+        /* Glassmorphism Container */
+        .glass-container {
+            max-width: 900px;
+            width: 95%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        .glass-container:hover {
+            box-shadow: 
+                0 12px 40px 0 rgba(31, 38, 135, 0.45),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+        }
+        .hidden { 
+            opacity: 0; 
+            pointer-events: none; 
+            transform: scale(0.95); 
+            position: absolute;
+        }
+        
+        /* Glass Input */
+        input {
+            font-family: inherit;
+            font-size: 18px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 20px;
+            margin: 10px;
+            width: 220px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        /* Glass Button */
+        button {
+            font-family: inherit;
+            font-size: 18px;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.8), rgba(196, 69, 105, 0.8));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 8px 20px rgba(196, 69, 105, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 30px rgba(196, 69, 105, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        /* Question Cards - Glassmorphism */
+        .question-wrapper {
+            position: relative;
+            min-height: 300px;
+            margin: 20px 0;
+        }
+        .question-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            transform: translateX(20px);
+        }
+        .question-container.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+        .question-container h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Glass Options */
+        .options { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center;
+            gap: 12px;
+        }
+        .option {
+            margin: 0;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .option:hover { 
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .option:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Results - Glassmorphism */
+        .result { 
+            font-size: 32px; 
+            margin: 20px 0;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+        }
+        
+        /* Photos Grid - Single Column Layout */
+        .photos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 30px 0;
+            width: 100%;
+            align-items: center;
+        }
+
+
+        
+        /* Photo Card - Glassmorphism */
+        .photo-card {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            animation: glow 3s infinite alternate;
+            transition: all 0.5s ease;
+        }
+        @keyframes glow { 
+            from { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.2); } 
+            to { box-shadow: 0 12px 40px rgba(255, 107, 157, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.3); } 
+        }
+        .photo-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            animation: glow 3s infinite alternate;
+            transition: all 0.5s ease;
+        }
+        .photo { 
+            width: 100%; 
+            height: 450px; 
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px; 
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+
+        .photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        .typing { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 14px; 
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border-right: 2px solid rgba(255, 255, 255, 0.8); 
+            animation: blink 1s infinite; 
+            min-height: 40px;
+        }
+        @keyframes blink { 
+            0%, 50% { border-color: transparent; } 
+            51%, 100% { border-color: rgba(255, 255, 255, 0.8); } 
+        }
+        
+        /* Gift Button - Glassmorphism */
+        .gift-btn { 
+            font-size: 22px; 
+            padding: 18px 40px; 
+            margin: 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.8), rgba(255, 140, 0, 0.8));
+            box-shadow: 
+                0 8px 25px rgba(255, 140, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        .gift-btn:hover {
+            box-shadow: 
+                0 12px 35px rgba(255, 140, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Music Card - Glassmorphism */
+        .music-card {
+            margin: 20px 0;
+            padding: 20px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: white;
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.01); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25); }
+        }
+        .music-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        .music-info {
+            flex: 1;
+            text-align: right;
+        }
+        .music-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .music-status {
+            font-size: 13px;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .play-btn {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 0;
+            padding: 0;
+        }
+        .play-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Confetti & Effects */
+        .confetti { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            pointer-events: none; 
+            z-index: 10; 
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: confetti-fall 4s ease-out infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg) scale(0.5); opacity: 0; }
+        }
+        .heart-explosion { 
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-size: 60px; 
+            animation: explode 1.2s ease-out; 
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            z-index: 50;
+        }
+        @keyframes explode { 
+            0% { transform: scale(0) rotate(0deg); opacity: 1; } 
+            50% { transform: scale(1.5) rotate(180deg); }
+            100% { transform: scale(2) rotate(360deg); opacity: 0; } 
+        }
+        
+        /* Footer - Glassmorphism */
+        footer {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        @media (max-width: 900px) {
+            .photo-card { max-width: 350px; }
+            .photo { height: 400px; }
+        }
+        @media (max-width: 600px) {
+            .glass-container { padding: 30px 20px; }
+            h1 { font-size: 40px; }
+            input { width: 180px; }
+            .options { flex-direction: column; align-items: center; }
+            .option { width: 100%; max-width: 280px; }
+            .photo-card { max-width: 100%; padding: 15px; }
+            .photo { height: 350px; }
+            .typing { font-size: 14px; }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="glass-container" id="password-screen">
+        <h1> عيد حب سعيد حبيبتي حياة💖</h1>
+        <p> مستعدة يا روحي </p>
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <br>
+        <button onclick="checkPassword()">اضغطي هنا لفتح قلبي💖</button>
+        <p id="error" style="color: #ff6b6b; display: none; margin-top: 15px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">حبيبتي، جربي مرة أخرى 😘</p>
+    </div>
+    
+    <div class="glass-container hidden" id="main-content">
+        <audio id="bg-music" loop>
+            <source src="image/ElgrandeToto BLUE LOVE (Lyrics video).mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="music-card" id="music-card">
+            <div class="music-icon">🎵</div>
+            <div class="music-info">
+                <div class="music-title">ElgrandeToto - BLUE LOVE</div>
+                <div class="music-status" id="music-status">جاري التشغيل...</div>
+            </div>
+            <button class="play-btn" id="play-btn" onclick="toggleMusic()">⏸</button>
+        </div>
+
+        <div id="questions-section">
+            <div class="question-wrapper">
+                <div class="question-container active" id="q1">
+                    <h2>شنو أكثر حاجة كنخاف منها وما كنبيّنش للناس؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(1, 'A')">A) نفشل</div>
+                        <div class="option" onclick="answer(1, 'B')">B) نخسر شي حد كنحبو</div>
+                        <div class="option" onclick="answer(1, 'C')">C) نبقى بوحدي</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q2">
+                    <h2>وقتاش كنحس براسي ضعيف؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(2, 'A')">A) ملي كنكون تحت ضغط كبير</div>
+                        <div class="option" onclick="answer(2, 'B')">B) ملي كنحس ما متفهمني حتى حد</div>
+                        <div class="option" onclick="answer(2, 'C')">C) ملي كنخيب أمل شي حد</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q3">
+                    <h2>شنو الحاجة اللي كنقلب عليها فالحب؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(3, 'A')">A) الاهتمام</div>
+                        <div class="option" onclick="answer(3, 'B')">B) الأمان</div>
+                        <div class="option" onclick="answer(3, 'C')">C) الاستقرار</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q4">
+                    <h2>شنو الحاجة اللي إلى درتيها كتوجعني بزاف؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(4, 'A')">A) الكذب عليا</div>
+                        <div class="option" onclick="answer(4, 'B')">B) تجاهلني</div>
+                        <div class="option" onclick="answer(4, 'C')">C) تقللي مني قدام الناس</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q5">
+                    <h2>فاش كنكون ساكت بزاف، غالباً كنكون…</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(5, 'A')">A) كنخمم فمستقبلي</div>
+                        <div class="option" onclick="answer(5, 'B')">B) مقلق</div>
+                        <div class="option" onclick="answer(5, 'C')">C) محتاج غير شي حد يفهمني بلا ما نهضر</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q6">
+                    <h2>شنو الحاجة اللي كنتمناها من شريكتي وما كنطلبهاش بصوت عالي؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(6, 'A')">A) تشجعني</div>
+                        <div class="option" onclick="answer(6, 'B')">B) تبقى جنبي فالأوقات الصعيبة</div>
+                        <div class="option" onclick="answer(6, 'C')">C) تفتخر بيا قدام الناس</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q7">
+                    <h2>شنو أكثر كلمة كتأثر فيا إلا سمعتهـا منك؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(7, 'A')">A) فخور/ة بيك</div>
+                        <div class="option" onclick="answer(7, 'B')">B) محتاجاك</div>
+                        <div class="option" onclick="answer(7, 'C')">C) ما نقدرش نعيش بلا بيك</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q8">
+                    <h2>إلى شي نهار تبدلت عليا الدنيا، شنو أول حاجة غادي نحتاجها منك؟</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(8, 'A')">A) حضن</div>
+                        <div class="option" onclick="answer(8, 'B')">B) كلمة تطمّنني</div>
+                        <div class="option" onclick="answer(8, 'C')">C) تبقي جنبي بلا شروط</div>
+                    </div>
+                </div>
+                <div class="question-container" id="q9">
+                    <h2>إلا تخاصمنا وسكّت، واش السكوت ديالي كيعني…</h2>
+                    <div class="options">
+                        <div class="option" onclick="answer(9, 'A')">A) ما بقيتش مهتم</div>
+                        <div class="option" onclick="answer(9, 'B')">B) مقلق بزاف</div>
+                        <div class="option" onclick="answer(9, 'C')">C) كنحاول نتحكم فراسي باش ما نجرحكش</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-section" class="hidden">
+            <div class="result" id="score"></div>
+            <p id="message" style="font-size: 22px; color: white;"></p>
+        </div>
+        
+        <div class="photos-grid" id="photos-grid">
+            <div class="photo-card hidden" id="photo-card-1">
+                <div class="photo">
+                    <img src="image/imag4.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-1"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-2">
+                <div class="photo">
+                    <img src="image/imag2.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-2"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-3">
+                <div class="photo">
+                    <img src="image/imag3.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-3"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-4">
+                <div class="photo" style="height: auto; min-height: 300px;">
+                    <img src="image/imag1.jpeg" alt="حبيبتي" style="width: 100%; height: auto; object-fit: contain; border-radius: 15px; display: block;">
+                </div>
+                <div class="typing" id="love-message-4"></div>
+            </div>
+
+            <div class="photo-card hidden" id="photo-card-5">
+                <div class="photo">
+                    <img src="image/imag5.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-5"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-6">
+                <div class="photo">
+                    <img src="image/imag6.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-6"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-7">
+                <div class="photo">
+                    <img src="image/imag7.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-7"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-8">
+                <div class="photo">
+                    <img src="image/imag8.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-8"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-9">
+                <div class="photo">
+                    <img src="image/imag9.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-9"></div>
+            </div>
+            <div class="photo-card hidden" id="photo-card-10">
+                <div class="photo">
+                    <img src="image/imag10.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="typing" id="love-message-10"></div>
+            </div>
+        </div>
+
+        <button class="gift-btn hidden" id="gift-btn" onclick="showGift()">خدي هديتك 🎁</button>
+        <div id="gift-message" class="hidden" style="margin-top: 20px; font-size: 20px; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">أنتِ هديتي الأكبر في الحياة! 💕</div>
+    </div>
+    
+    <div class="confetti hidden" id="confetti"></div>
+    <div class="heart-explosion hidden" id="heart-explosion">❤️</div>
+
+    <footer>
+        تم تطوير الموقع بواسطة : OUSSAMA SMAKA WOLF 🐺
+    </footer>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = ['❤️', '💖', '💕', '💗'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'mylove') {
+                document.getElementById('password-screen').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+                
+                const audio = document.getElementById('bg-music');
+                audio.volume = 0.5;
+                audio.play().catch(function(error) {
+                    console.log('Audio play failed:', error);
+                });
+            } else {
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        let currentQuestion = 1;
+        let correctAnswers = 0;
+        const totalQuestions = 9;
+        const correct = {1: 'A', 2: 'C', 3: 'C', 4: 'A', 5: 'A', 6: 'B', 7: 'B', 8: 'C', 9: 'C'};
+
+        function answer(q, ans) {
+            if (ans === correct[q]) correctAnswers++;
+            
+            document.getElementById('q' + q).classList.remove('active');
+            
+            currentQuestion++;
+            if (currentQuestion <= totalQuestions) {
+                setTimeout(() => {
+                    document.getElementById('q' + currentQuestion).classList.add('active');
+                }, 300);
+            } else {
+                setTimeout(() => {
+                    document.getElementById('questions-section').classList.add('hidden');
+                    showResult();
+                }, 300);
+            }
+        }
+
+        function showResult() {
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            document.getElementById('score').innerText = `نسبة الحب ديالك: ${percentage}%`;
+            let message;
+            if (percentage === 100) message = 'انتي حب حياتي 💍❤️';
+            else if (percentage >= 70) message = 'مازال خاصك شوية تدريب 😏💕';
+            else message = 'غادي نعاودو الاختبار 😉';
+            document.getElementById('message').innerText = message;
+            document.getElementById('result-section').classList.remove('hidden');
+            setTimeout(() => {
+                showPhotoCards();
+            }, 2000);
+        }
+
+        function showPhotoCards() {
+            const cards = [
+                { id: 'photo-card-1', msgId: 'love-message-1', text: 'أنتِ نجمة حياتي! 💖', delay: 0 },
+                { id: 'photo-card-2', msgId: 'love-message-2', text: 'كل يوم معكِ عيد حب 💕', delay: 500 },
+                { id: 'photo-card-3', msgId: 'love-message-3', text: 'أحبكِ أكثر من أي شيء 💗', delay: 1000 },
+                { id: 'photo-card-4', msgId: 'love-message-4', text: 'أنتِ هديتي الأكبر 💝', delay: 1500 },
+                { id: 'photo-card-5', msgId: 'love-message-5', text: 'حياتي بدونكِ مستحيلة 💍', delay: 2000 },
+                { id: 'photo-card-6', msgId: 'love-message-6', text: 'أنتِ روحي وقلبي 💓', delay: 2500 },
+                { id: 'photo-card-7', msgId: 'love-message-7', text: 'معكِ أشعر بالأمان 🤗', delay: 3000 },
+                { id: 'photo-card-8', msgId: 'love-message-8', text: 'أنتِ أجمل شيء في حياتي 🌹', delay: 3500 },
+                { id: 'photo-card-9', msgId: 'love-message-9', text: 'سأحبكِ إلى الأبد ♾️', delay: 4000 },
+                { id: 'photo-card-10', msgId: 'love-message-10', text: 'أنتِ ملكي وحدي 👑', delay: 4500 }
+            ];
+            
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    document.getElementById(card.id).classList.remove('hidden');
+                    typeMessage(card.msgId, card.text, index === cards.length - 1);
+                }, card.delay);
+            });
+        }
+
+        function typeMessage(elementId, text, isLast) {
+            const element = document.getElementById(elementId);
+            let i = 0;
+            element.innerHTML = '';
+            const timer = setInterval(() => {
+                element.innerHTML += text.charAt(i);
+                i++;
+                if (i > text.length - 1) {
+                    clearInterval(timer);
+                    if (isLast) {
+                        setTimeout(() => document.getElementById('gift-btn').classList.remove('hidden'), 1000);
+                    }
+                }
+            }, 80);
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            const btn = document.getElementById('play-btn');
+            const status = document.getElementById('music-status');
+            
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '⏸';
+                status.innerText = 'جاري التشغيل...';
+            } else {
+                audio.pause();
+                btn.innerHTML = '▶';
+                status.innerText = 'متوقف مؤقتاً';
+            }
+        }
+
+        function showGift() {
+            window.location.href = 'gift.html';
+        }
+    </script>
+</body>
+</html>

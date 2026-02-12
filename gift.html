@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هدية عيد الحب 💝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(196, 69, 105, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 154, 158, 0.2) 0%, transparent 40%);
+            z-index: -2;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 20px;
+            animation: float 8s infinite ease-in-out;
+            filter: blur(1px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(0.5); opacity: 0; }
+        }
+        
+        /* Glassmorphism Container */
+        .glass-container {
+            max-width: 500px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 35px;
+            padding: 50px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            position: relative;
+            animation: slideIn 1s ease;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gift Box - Glassmorphism */
+        .gift-box {
+            font-size: 120px;
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            display: inline-block;
+        }
+        .gift-box:hover {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.4));
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+        .gift-box.opened {
+            animation: openGift 0.6s ease forwards;
+        }
+        @keyframes openGift {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.3) rotate(10deg); }
+            100% { transform: scale(0) rotate(20deg); opacity: 0; }
+        }
+        
+        /* Message - Glassmorphism */
+        .message {
+            font-size: 26px;
+            color: white;
+            margin: 25px 0;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Coupon - Glassmorphism Gold */
+        .coupon {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 140, 0, 0.3));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: white;
+            padding: 35px;
+            border-radius: 25px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8) rotateX(15deg);
+            transition: all 0.6s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 10px 40px rgba(255, 140, 0, 0.3),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+        .coupon.show {
+            opacity: 1;
+            transform: scale(1) rotateX(0deg);
+        }
+        .coupon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        .coupon-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .coupon-value {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 15px 0;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+        .coupon-code {
+            font-size: 18px;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            letter-spacing: 3px;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Back Button - Glassmorphism */
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 25px;
+            padding: 18px 45px;
+            font-size: 20px;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 35px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 12px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: confetti-fall 4s ease-out infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg) scale(0.5); opacity: 0; }
+        }
+        .heart-explosion {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            animation: explode 1.5s ease-out;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+            z-index: 50;
+        }
+        @keyframes explode {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(2) rotate(180deg); }
+            100% { transform: scale(3) rotate(360deg); opacity: 0; }
+        }
+        
+        .hidden { display: none; }
+        
+        /* Footer - Glassmorphism */
+        footer {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+        
+        @media (max-width: 600px) {
+            .glass-container { padding: 35px 25px; }
+            h1 { font-size: 40px; }
+            .gift-box { font-size: 100px; }
+            .message { font-size: 22px; }
+            .coupon-value { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="confetti hidden" id="confetti"></div>
+    
+    <div class="glass-container">
+        <h1>هديتك الخاصة 💝</h1>
+        
+        <div class="gift-box" id="giftBox" onclick="openGift()">🎁</div>
+        
+        <div class="message" id="message">
+            <p>حبيبتي حياة أنتِ أغلى هدية في حياتي! 💕</p>
+            <p>كل يوم معكِ هو عيد حب بالنسبة لي</p>
+        </div>
+        
+        <div class="coupon" id="coupon">
+            <div class="coupon-title">🎟️ قسيمة هدية خاصة</div>
+            <div class="coupon-value">عشاء رومانسي 🍽️</div>
+            <div class="coupon-code">CODE: MYLOVE2024</div>
+        </div>
+        
+        <a href="index.html" class="back-btn">العودة للرئيسية ↩️</a>
+    </div>
+
+    <footer>
+        تم تطوير الموقع بواسطة : OUSSAMA SMAKA WOLF 🐺
+    </footer>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = ['❤️', '💖', '💕', '💗'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        function openGift() {
+            const giftBox = document.getElementById('giftBox');
+            const message = document.getElementById('message');
+            const coupon = document.getElementById('coupon');
+            const confetti = document.getElementById('confetti');
+            
+            giftBox.classList.add('opened');
+            
+            setTimeout(() => {
+                message.classList.add('show');
+            }, 600);
+            
+            setTimeout(() => {
+                coupon.classList.add('show');
+            }, 1200);
+            
+            confetti.classList.remove('hidden');
+            for (let i = 0; i < 60; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.animationDelay = Math.random() * 4 + 's';
+                piece.style.backgroundColor = ['#FFD700', '#FF6B9D', '#C44569', '#FFEAA7'][Math.floor(Math.random() * 4)];
+                confetti.appendChild(piece);
+            }
+            
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const explosion = document.createElement('div');
+                    explosion.className = 'heart-explosion';
+                    explosion.innerHTML = ['❤️', '💖', '💕'][Math.floor(Math.random() * 3)];
+                    explosion.style.left = (50 + (Math.random() - 0.5) * 50) + '%';
+                    explosion.style.top = (50 + (Math.random() - 0.5) * 50) + '%';
+                    document.body.appendChild(explosion);
+                    setTimeout(() => explosion.remove(), 1500);
+                }, i * 250);
+            }
+        }
+    </script>
+</body>
+</html>
