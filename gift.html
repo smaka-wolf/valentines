@@ -307,7 +307,36 @@
             box-shadow: 0 12px 35px rgba(0,0,0,0.4);
         }
         
+        /* Video Download Button */
+        .video-download-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.9), rgba(196, 69, 105, 0.9));
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+        
+        .video-download-btn:hover {
+            transform: translateX(-50%) translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+        
         /* Back Button - Glassmorphism */
+
 
 
         .back-btn {
@@ -712,7 +741,6 @@
                             <source src="image/video1.mp4" type="video/mp4">
                             متصفحك لا يدعم تشغيل الفيديو
                         </video>
-
                     </div>
                 </div>
             </div>
