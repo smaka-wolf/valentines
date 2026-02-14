@@ -680,6 +680,8 @@
 <body>
     <div class="hearts" id="hearts"></div>
     <div class="confetti hidden" id="confetti"></div>
+    <audio id="giftAudio" src="image/oudio1.mp4" preload="auto"></audio>
+
     
     <a href="index.html" class="back-btn" style="position: fixed; top: 20px; right: 20px; margin: 0; padding: 8px 15px; font-size: 14px; z-index: 100;">↩️</a>
     
@@ -798,8 +800,15 @@
             const message = document.getElementById('message');
             const coupon = document.getElementById('coupon');
             const confetti = document.getElementById('confetti');
+            const audio = document.getElementById('giftAudio');
+            
+            // Play audio when gift opens
+            audio.play().catch(function(error) {
+                console.log('Audio play failed:', error);
+            });
             
             giftBox.classList.add('opened');
+
             
             setTimeout(() => {
                 message.classList.add('show');
