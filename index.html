@@ -252,8 +252,8 @@
             50% { opacity: 0.6; transform: scale(0.9); }
         }
         
-        /* Adjust body padding for fixed header */
-        body {
+        /* Adjust body padding for fixed header - only when counter is visible */
+        body.has-counter {
             padding-top: 160px;
         }
         
@@ -279,7 +279,7 @@
                 gap: 8px;
             }
             
-            body {
+            body.has-counter {
                 padding-top: 140px;
             }
         }
@@ -298,10 +298,11 @@
                 font-size: 20px;
             }
             
-            body {
+            body.has-counter {
                 padding-top: 130px;
             }
         }
+
 
         /* Photo Click Cursor */
         .photo, .photo img {
