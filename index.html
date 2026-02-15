@@ -158,6 +158,88 @@
             transform: translateY(-1px);
         }
         
+        /* Photo Click Cursor */
+        .photo, .photo img {
+            cursor: zoom-in;
+        }
+        
+        /* Lightbox/Modal Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+        .lightbox-download {
+            font-size: 16px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, rgba(100, 200, 255, 0.9), rgba(0, 150, 255, 0.9));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.4);
+        }
+        .lightbox-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 150, 255, 0.5);
+        }
+
+        
+
+
+        
         h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 52px;
@@ -602,70 +684,79 @@
         
         <div class="photos-grid" id="photos-grid">
             <div class="photo-card hidden" id="photo-card-1">
-                <div class="photo" style="background-image: url('image/imag4.jpeg');"></div>
-
+                <div class="photo" style="background-image: url('image/imag4.jpeg');" onclick="openLightbox('image/imag4.jpeg', 'love-photo-1.jpeg')"></div>
                 <div class="typing" id="love-message-1"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-2">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag2.jpeg', 'love-photo-2.jpeg')">
                     <img src="image/imag2.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-2"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-3">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag3.jpeg', 'love-photo-3.jpeg')">
                     <img src="image/imag3.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-3"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-4">
-                <div class="photo" style="height: auto; min-height: 300px;">
+                <div class="photo" style="height: auto; min-height: 300px;" onclick="openLightbox('image/imag1.jpeg', 'love-photo-4.jpeg')">
                     <img src="image/imag1.jpeg" alt="حبيبتي" style="width: 100%; height: auto; object-fit: contain; border-radius: 15px; display: block;">
                 </div>
                 <div class="typing" id="love-message-4"></div>
             </div>
 
             <div class="photo-card hidden" id="photo-card-5">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag5.jpeg', 'love-photo-5.jpeg')">
                     <img src="image/imag5.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-5"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-6">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag6.jpeg', 'love-photo-6.jpeg')">
                     <img src="image/imag6.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-6"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-7">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag7.jpeg', 'love-photo-7.jpeg')">
                     <img src="image/imag7.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-7"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-8">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag8.jpeg', 'love-photo-8.jpeg')">
                     <img src="image/imag8.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-8"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-9">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag9.jpeg', 'love-photo-9.jpeg')">
                     <img src="image/imag9.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-9"></div>
             </div>
-            <div class="photo-card hidden" id="photo-card-10">
-               <div class="photo" style="background-image: url('image/imag10.jpeg');"></div>
 
+            <div class="photo-card hidden" id="photo-card-10">
+               <div class="photo" style="background-image: url('image/imag10.jpeg');" onclick="openLightbox('image/imag10.jpeg', 'love-photo-10.jpeg')"></div>
                 <div class="typing" id="love-message-10"></div>
             </div>
+
             <div class="photo-card hidden" id="photo-card-11">
-                <div class="photo">
+                <div class="photo" onclick="openLightbox('image/imag11.jpeg', 'love-photo-11.jpeg')">
                     <img src="image/imag11.jpeg" alt="حبيبتي" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
                 </div>
                 <div class="typing" id="love-message-11"></div>
             </div>
+
+
         </div>
 
 
@@ -677,7 +768,17 @@
     <div class="confetti hidden" id="confetti"></div>
     <div class="heart-explosion hidden" id="heart-explosion">❤️</div>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="صورة مكبرة">
+            <button class="lightbox-download" id="lightbox-download-btn" onclick="downloadCurrentImage()">تحميل الصورة 💾</button>
+        </div>
+    </div>
+
     <footer>
+
         تم تطوير الموقع بواسطة : OUSSAMA SMAKA WOLF 🐺
     </footer>
 
@@ -808,6 +909,40 @@
         function showGift() {
             window.location.href = 'gift.html';
         }
+
+        let currentDownloadUrl = '';
+        let currentDownloadFilename = '';
+
+        function openLightbox(url, filename) {
+            currentDownloadUrl = url;
+            currentDownloadFilename = filename;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = url;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function downloadCurrentImage() {
+            if (currentDownloadUrl && currentDownloadFilename) {
+                const link = document.createElement('a');
+                link.href = currentDownloadUrl;
+                link.download = currentDownloadFilename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+
 
        // Reset الصفحة عند التحميل
     window.addEventListener('load', () => {
