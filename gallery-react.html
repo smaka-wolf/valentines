@@ -13,6 +13,9 @@
     <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
+    <!-- Math.js for calculations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -45,7 +48,7 @@
             height: 100%;
         }
 
-        /* GradualBlur Styles - Component added by Ansh - github.com/ansh-dhanani */
+        /* GradualBlur Styles */
         .gradual-blur { 
             pointer-events: none; 
             transition: opacity 0.3s ease-out; 
@@ -180,7 +183,6 @@
             return isVisible;
         };
 
-        // GradualBlur Component
         function GradualBlur(props) {
             const containerRef = useRef(null);
             const [isHovered, setIsHovered] = useState(false);
@@ -307,7 +309,7 @@
             );
         }
 
-        // Gallery Component with GradualBlur
+        // Gallery Component
         function Gallery() {
             const [isPaused, setIsPaused] = useState(false);
             
@@ -423,16 +425,16 @@
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
-                    {/* GradualBlur at top - Component by Ansh */}
+                    {/* GradualBlur at top */}
                     <GradualBlur
                         target="page"
                         position="top"
-                        height="7rem"
-                        strength={2}
-                        divCount={5}
+                        height="8rem"
+                        strength={3}
+                        divCount={8}
                         curve="bezier"
                         exponential
-                        opacity={1}
+                        opacity={0.8}
                     />
                     
                     {/* Header Text */}
@@ -458,16 +460,16 @@
                         ))}
                     </div>
                     
-                    {/* GradualBlur at bottom - Component by Ansh */}
+                    {/* GradualBlur at bottom */}
                     <GradualBlur
                         target="page"
                         position="bottom"
-                        height="7rem"
-                        strength={2}
-                        divCount={5}
+                        height="10rem"
+                        strength={3}
+                        divCount={8}
                         curve="bezier"
                         exponential
-                        opacity={1}
+                        opacity={0.9}
                     />
                 </div>
             );
