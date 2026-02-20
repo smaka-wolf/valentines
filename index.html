@@ -20,7 +20,7 @@
         }
        body {
     font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, #131313 0%, #790e49 50%, #080708 100%);
     color: #000;
     overflow-x: hidden;
     min-height: 100vh;
@@ -720,9 +720,24 @@
 
     </style>
 </head>
-<body>
+<body class="has-counter">
+    <!-- Authentication Check - Redirect to loading if not authenticated -->
+    <script>
+        // Check if user came from loading page
+        if (sessionStorage.getItem('authenticated') !== 'true') {
+            // Not authenticated, redirect to loading page
+            window.location.href = 'loading.html';
+        } else {
+            // Authenticated, clear the flag so refresh will require re-login
+            sessionStorage.removeItem('authenticated');
+        }
+    </script>
+    
     <!-- Love Counter Header -->
-    <div class="love-counter-header hidden" id="love-counter-header">
+
+
+    <div class="love-counter-header" id="love-counter-header">
+
 
         <div class="counter-container">
             <div class="counter-title">حبنا منذ 24 مارس 2016</div>
@@ -763,17 +778,8 @@
     <div class="hearts" id="hearts"></div>
         <a href="gallery.html" class="back-btn">↩️ رجوع</a>
 
-    <div class="glass-container" id="password-screen">
+    <div class="glass-container" id="main-content">
 
-        <h1> عيد حب سعيد حبيبتي حياة💖</h1>
-        <p> مستعدة يا روحي </p>
-        <input type="password" id="password" placeholder="ادخلي كلمة المرور">
-        <br>
-        <button onclick="checkPassword()">اضغطي هنا لفتح قلبي💖</button>
-        <p id="error" style="color: #ff6b6b; display: none; margin-top: 15px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">حبيبتي، جربي مرة أخرى 😘</p>
-    </div>
-    
-    <div class="glass-container hidden" id="main-content">
         <audio id="bg-music" loop>
             <source src="image/ElgrandeToto BLUE LOVE (Lyrics video).mp3" type="audio/mpeg">
         </audio>
@@ -985,26 +991,8 @@
         }
         createHearts();
 
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            if (password === 'mylove') {
-                document.getElementById('password-screen').classList.add('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-                document.getElementById('love-counter-header').classList.remove('hidden');
-                document.body.classList.add('has-counter');
-                
-                const audio = document.getElementById('bg-music');
-                audio.volume = 0.5;
-                audio.play().catch(function(error) {
-                    console.log('Audio play failed:', error);
-                });
-            } else {
-                document.getElementById('error').style.display = 'block';
-            }
-        }
-
-
         let currentQuestion = 1;
+
         let correctAnswers = 0;
         const totalQuestions = 9;
         const correct = {1: 'A', 2: 'C', 3: 'C', 4: 'A', 5: 'A', 6: 'B', 7: 'B', 8: 'C', 9: 'C'};
@@ -1199,61 +1187,60 @@
 
        // Reset الصفحة عند التحميل
     window.addEventListener('load', () => {
-    // رجّع كلمة السر فارغة
-    const passwordInput = document.getElementById('password');
-    if(passwordInput) passwordInput.value = '';
+        // تشغيل الموسيقى تلقائياً
+        const audio = document.getElementById('bg-music');
+        if (audio) {
+            audio.volume = 0.5;
+            audio.play().catch(function(error) {
+                console.log('Auto-play failed:', error);
+            });
+        }
+        
+        // خبّي كل الأسئلة
 
-    // ورِّي شاشة كلمة السر، خبّي المحتوى الرئيسي
-    const passwordScreen = document.getElementById('password-screen');
-    const mainContent = document.getElementById('main-content');
-    if(passwordScreen) passwordScreen.classList.remove('hidden');
-    if(mainContent) mainContent.classList.add('hidden');
+        for (let i = 1; i <= 9; i++) {
+            const q = document.getElementById('q' + i);
+            if(q) q.classList.remove('active');
+        }
+        const firstQuestion = document.getElementById('q1');
+        if(firstQuestion) firstQuestion.classList.add('active');
 
-    // خبّي كل الأسئلة
-    for (let i = 1; i <= 9; i++) {
-        const q = document.getElementById('q' + i);
-        if(q) q.classList.remove('active');
-    }
-    const firstQuestion = document.getElementById('q1');
-    if(firstQuestion) firstQuestion.classList.add('active');
+        // خبّي نتائج الاختبار
+        const resultSection = document.getElementById('result-section');
+        if(resultSection) resultSection.classList.add('hidden');
 
-    // خبّي نتائج الاختبار
-    const resultSection = document.getElementById('result-section');
-    if(resultSection) resultSection.classList.add('hidden');
+        // خبّي كل الصور
+        for (let i = 1; i <= 11; i++) {
+            const photo = document.getElementById('photo-card-' + i);
+            if(photo) photo.classList.add('hidden');
+        }
 
-    // خبّي كل الصور
-    for (let i = 1; i <= 11; i++) {
-        const photo = document.getElementById('photo-card-' + i);
-        if(photo) photo.classList.add('hidden');
-    }
+        // خبّي هديّة
+        const giftBtn = document.getElementById('gift-btn');
+        const giftMessage = document.getElementById('gift-message');
+        if(giftBtn) giftBtn.classList.add('hidden');
+        if(giftMessage) giftMessage.classList.add('hidden');
 
+        // وقف الكونفيتي والانفجار ديال القلب
+        const confetti = document.getElementById('confetti');
+        const heartExplosion = document.getElementById('heart-explosion');
+        if(confetti) confetti.classList.add('hidden');
+        if(heartExplosion) heartExplosion.classList.add('hidden');
 
-    // خبّي هديّة
-    const giftBtn = document.getElementById('gift-btn');
-    const giftMessage = document.getElementById('gift-message');
-    if(giftBtn) giftBtn.classList.add('hidden');
-    if(giftMessage) giftMessage.classList.add('hidden');
+        // رجّع عدد الأسئلة الحالية والجواب الصحيح
+        window.currentQuestion = 1;
+        window.correctAnswers = 0;
 
-    // وقف الكونفيتي والانفجار ديال القلب
-    const confetti = document.getElementById('confetti');
-    const heartExplosion = document.getElementById('heart-explosion');
-    if(confetti) confetti.classList.add('hidden');
-    if(heartExplosion) heartExplosion.classList.add('hidden');
+        // Preload الموسيقى والصور (باش مايوقعش delay)
+        const bgMusic = document.getElementById('bg-music');
+        if(bgMusic) bgMusic.load();
 
-    // رجّع عدد الأسئلة الحالية والجواب الصحيح
-    window.currentQuestion = 1;
-    window.correctAnswers = 0;
+        for(let i = 1; i <= 11; i++){
+            const img = document.getElementById('photo-card-' + i);
+            if(img) new Image().src = img.src;
+        }
+    });
 
-    // Preload الموسيقى والصور (باش مايوقعش delay)
-    const bgMusic = document.getElementById('bg-music');
-    if(bgMusic) bgMusic.load();
-
-    for(let i = 1; i <= 11; i++){
-        const img = document.getElementById('photo-card-' + i);
-        if(img) new Image().src = img.src;
-    }
-
-   });
 
 
     </script>
