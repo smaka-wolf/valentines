@@ -1,265 +1,321 @@
 tt<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Secret World - Loading</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="color-scheme" content="light">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="color-scheme" content="light" />
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #131313 0%, #790e49 50%, #080708 100%);
-            color: #000;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(196, 69, 105, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 154, 158, 0.2) 0%, transparent 40%);
-            z-index: -2;
-        }
-        
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-        
-        .heart {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 20px;
-            animation: float 8s infinite ease-in-out;
-            filter: blur(1px);
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(100vh) rotate(0deg) scale(1); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg) scale(0.5); opacity: 0; }
-        }
+      body {
+        font-family: "Cairo", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #131313 0%,
+          #790e49 50%,
+          #080708 100%
+        );
+        color: #000;
+        overflow-x: hidden;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
 
-        /* Glassmorphism Container */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 107, 157, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(196, 69, 105, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(255, 154, 158, 0.2) 0%,
+            transparent 40%
+          );
+        z-index: -2;
+      }
+
+      .hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .heart {
+        position: absolute;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        animation: float 8s infinite ease-in-out;
+        filter: blur(1px);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(100vh) rotate(0deg) scale(1);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      /* Glassmorphism Container */
+      .glass-container {
+        max-width: 500px;
+        width: 95%;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 50px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        text-align: center;
+        transition: all 0.5s ease;
+      }
+
+      .glass-container:hover {
+        box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 48px;
+        color: black;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 18px;
+        color: black;
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+
+      /* Glass Input */
+      input {
+        font-family: inherit;
+        font-size: 16px;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 20px;
+        margin: 15px auto;
+        width: 100%;
+        max-width: 320px;
+        display: block;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      input:focus {
+        outline: none;
+        transform: scale(1.03);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+      }
+
+      input::placeholder {
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      /* Glass Button */
+      button {
+        font-family: inherit;
+        font-size: 18px;
+        padding: 15px 40px;
+        border: none;
+        border-radius: 25px;
+        margin: 20px 10px 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 157, 0.8),
+          rgba(196, 69, 105, 0.8)
+        );
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 20px rgba(196, 69, 105, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(196, 69, 105, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+
+      button:active {
+        transform: translateY(-1px);
+      }
+
+      .error-message {
+        color: #ff6b6b;
+        display: none;
+        margin-top: 15px;
+        font-size: 16px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        animation: shake 0.5s ease;
+      }
+
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-10px);
+        }
+        75% {
+          transform: translateX(10px);
+        }
+      }
+
+      .lock-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      @media (max-width: 600px) {
         .glass-container {
-            max-width: 500px;
-            width: 95%;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 
-                0 8px 32px 0 rgba(31, 38, 135, 0.37),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: all 0.5s ease;
+          padding: 40px 25px;
         }
-        
-        .glass-container:hover {
-            box-shadow: 
-                0 12px 40px 0 rgba(31, 38, 135, 0.45),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-        }
-
         h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 48px;
-            color: black;
-            margin-bottom: 30px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          font-size: 36px;
         }
-
         .subtitle {
-            font-size: 18px;
-            color: black;
-            margin-bottom: 30px;
-            opacity: 0.8;
+          font-size: 16px;
         }
-
-        /* Glass Input */
         input {
-            font-family: inherit;
-            font-size: 16px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 20px;
-            margin: 15px auto;
-            width: 100%;
-            max-width: 320px;
-            display: block;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          max-width: 100%;
         }
-
-        input:focus {
-            outline: none;
-            transform: scale(1.03);
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
-        }
-
-        input::placeholder {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        /* Glass Button */
-        button {
-            font-family: inherit;
-            font-size: 18px;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 25px;
-            margin: 20px 10px 10px;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.8), rgba(196, 69, 105, 0.8));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 
-                0 8px 20px rgba(196, 69, 105, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-        }
-        
-        button:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 
-                0 12px 30px rgba(196, 69, 105, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-        
-        button:active {
-            transform: translateY(-1px);
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            display: none;
-            margin-top: 15px;
-            font-size: 16px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-            animation: shake 0.5s ease;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            75% { transform: translateX(10px); }
-        }
-
-        .lock-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        @media (max-width: 600px) {
-            .glass-container { padding: 40px 25px; }
-            h1 { font-size: 36px; }
-            .subtitle { font-size: 16px; }
-            input { max-width: 100%; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="hearts" id="hearts"></div>
-    
+
     <div class="glass-container">
-        <span class="lock-icon">🔒</span>
-        <h1>Our Secret World ❤️</h1>
-        <p class="subtitle">أدخلي كلمة المرور باش تدخلي لعالمنا السري</p>
-        
-        <input type="password" id="password" placeholder="ادخلي كلمة المرور" autocomplete="off">
-        <br>
-        <button onclick="checkPassword()">Enter Our World</button>
-        <p class="error-message" id="error">حبيبتي، جربي مرة أخرى 😘</p>
+      <span class="lock-icon">🔒</span>
+      <h1>Our Secret World ❤️</h1>
+      <p class="subtitle">أدخلي كلمة المرور باش تدخلي لعالمنا السري</p>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="ادخلي كلمة المرور"
+        autocomplete="off"
+      />
+      <br />
+      <button onclick="checkPassword()">Enter Our World</button>
+      <p class="error-message" id="error">حبيبتي، جربي مرة أخرى 😘</p>
     </div>
 
     <script>
-        // Create floating hearts
-        function createHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = ['❤️', '💖', '💕', '💗'][Math.floor(Math.random() * 4)];
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 8 + 's';
-                heart.style.animationDuration = (6 + Math.random() * 4) + 's';
-                heartsContainer.appendChild(heart);
-            }
+      // Create floating hearts
+      function createHearts() {
+        const heartsContainer = document.getElementById("hearts");
+        for (let i = 0; i < 25; i++) {
+          const heart = document.createElement("div");
+          heart.className = "heart";
+          heart.innerHTML = ["❤️", "💖", "💕", "💗"][
+            Math.floor(Math.random() * 4)
+          ];
+          heart.style.left = Math.random() * 100 + "%";
+          heart.style.animationDelay = Math.random() * 8 + "s";
+          heart.style.animationDuration = 6 + Math.random() * 4 + "s";
+          heartsContainer.appendChild(heart);
         }
-        createHearts();
+      }
+      createHearts();
 
-        // Check password and redirect
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            const errorElement = document.getElementById('error');
-            
-            if (password === 'mylove') {
-                // Set authentication flag in sessionStorage
-                sessionStorage.setItem('authenticated', 'true');
-                // Redirect to main page
-                window.location.href = 'index.html';
-            } else {
-                // Show error message with animation
-                errorElement.style.display = 'block';
-                errorElement.style.animation = 'none';
-                setTimeout(() => {
-                    errorElement.style.animation = 'shake 0.5s ease';
-                }, 10);
-            }
+      // Check password and redirect
+      function checkPassword() {
+        const password = document.getElementById("password").value;
+        const errorElement = document.getElementById("error");
+
+        if (password === "mylove") {
+          // Set authentication flag in sessionStorage
+          sessionStorage.setItem("authenticated", "true");
+          // Redirect to main page
+          window.location.href = "index.html";
+        } else {
+          // Show error message with animation
+          errorElement.style.display = "block";
+          errorElement.style.animation = "none";
+          setTimeout(() => {
+            errorElement.style.animation = "shake 0.5s ease";
+          }, 10);
         }
+      }
 
-
-        // Allow Enter key to submit
-        document.getElementById('password').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                checkPassword();
-            }
+      // Allow Enter key to submit
+      document
+        .getElementById("password")
+        .addEventListener("keypress", function (event) {
+          if (event.key === "Enter") {
+            checkPassword();
+          }
         });
 
-        // Clear password on load
-        window.addEventListener('load', () => {
-            document.getElementById('password').value = '';
-            document.getElementById('password').focus();
-        });
+      // Clear password on load
+      window.addEventListener("load", () => {
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
+      });
     </script>
-</body>
+  </body>
 </html>
