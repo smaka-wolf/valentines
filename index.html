@@ -365,6 +365,23 @@
         document.getElementById('seconds').textContent = seconds;
       }
       
+       function toggleMusic() {
+        const audio = document.getElementById("bg-music");
+        const btn = document.getElementById("play-btn");
+        const status = document.getElementById("music-status");
+
+        if (audio.paused) {
+          audio.play();
+          btn.innerHTML = "⏸";
+          status.innerText = "جاري التشغيل...";
+        } else {
+          audio.pause();
+          btn.innerHTML = "▶";
+          status.innerText = "متوقف مؤقتاً";
+        }
+      }
+
+      
       // Start the counter
       updateLoveCounter();
       setInterval(updateLoveCounter, 1000);
