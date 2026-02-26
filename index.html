@@ -137,6 +137,79 @@
         color: rgba(255, 255, 255, 0.8);
         font-weight: bold;
       }
+      /* Music Card - Glassmorphism */
+      .music-card {
+        margin: 20px 0;
+        padding: 20px 25px;
+        background: linear-gradient(135deg, #c7dc0755, #0acaf190, #ee2cb470);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        color: white;
+        animation: pulse 3s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        50% {
+          transform: scale(1.01);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+      }
+      .music-icon {
+        font-size: 32px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      }
+      .music-info {
+        flex: 1;
+        text-align: right;
+      }
+      .music-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+      .music-status {
+        font-size: 13px;
+        opacity: 0.9;
+        color: black;
+      }
+      .play-btn {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin: 0;
+        padding: 0;
+      }
+      .play-btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
     </style>
 
   </head>
@@ -155,8 +228,7 @@
     <header>
         <!-- Love Counter Header -->
     <div class="love-counter-header" id="love-counter-header">
-       <h1>OUS
-        AMA ❤️ HAYAT</h1>
+       <h1>OUSAMA ❤️ HAYAT</h1>
       <div class="counter-title">💕 حبنا منذ 24 مارس 2016 💕</div>
       <div class="counter-units">
         <div class="counter-unit">
@@ -190,6 +262,28 @@
         </div>
       </div>
     </div>
+
+     <div class="hearts" id="hearts"></div>
+
+    <div class="glass-container" id="main-content">
+      <audio id="bg-music" loop>
+        <source
+          src="image/ElgrandeToto BLUE LOVE (Lyrics video).mp3"
+          type="audio/mpeg"
+        />
+      </audio>
+
+      <div class="music-card" id="music-card">
+        <div class="music-icon">🎵</div>
+        <div class="music-info">
+          <div class="music-title">ElgrandeToto - BLUE LOVE</div>
+          <div class="music-status" id="music-status">جاري التشغيل...</div>
+        </div>
+        <button class="play-btn" id="play-btn" onclick="toggleMusic()">
+          ⏸
+        </button>
+      </div>
+
      
     </header>
 
