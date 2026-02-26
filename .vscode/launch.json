@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter: Run Android Emulator",
+            "type": "dart",
+            "request": "launch",
+            "program": "flutter_application_1/lib/main.dart",
+            "args": [
+                "--device-id",
+                "emulator"
+            ],
+            "env": {
+                "ANDROID_HOME": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk",
+                "ANDROID_SDK_ROOT": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk"
+            }
+        },
+        {
+            "name": "Flutter: Run my_app",
+            "type": "dart",
+            "request": "launch",
+            "program": "my_app/lib/main.dart",
+            "args": [
+                "--device-id",
+                "emulator"
+            ],
+            "env": {
+                "ANDROID_HOME": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk",
+                "ANDROID_SDK_ROOT": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk"
+            }
+        }
+    ]
+}

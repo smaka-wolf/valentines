@@ -1,0 +1,10 @@
+{
+    "dart.flutterSdkPath": "C:\\Users\\smaka\\flutter",
+    "dart.sdkPath": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk",
+    "android.sdk.path": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk",
+    "emulator.emulatorPath": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk\\emulator",
+    "dart.env": {
+        "ANDROID_HOME": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk",
+        "ANDROID_SDK_ROOT": "C:\\Users\\smaka\\AppData\\Local\\Android\\sdk"
+    }
+}
